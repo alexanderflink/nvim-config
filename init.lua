@@ -21,9 +21,24 @@ return require('packer').startup(function(use)
     use 'karb94/neoscroll.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'ishan9299/nvim-solarized-lua'
+    use "nvim-lua/plenary.nvim"
+    use { "ellisonleao/gruvbox.nvim" }
+    use {
+	'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	requires = {{'nvim-lua/plenary.nvim'}}
+    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
 
-    vim.cmd('colorscheme solarized')
 
+    vim.cmd('colorscheme gruvbox')
+    require('telescope').setup({
+	extensions = {
+	    file_browser = {
+		    hijack_netrw = true
+	    }
+	}
+    })
+    require('telescope').load_extension('file_browser')
     require('neoscroll').setup()
     require("mason").setup()
     require("mason-lspconfig").setup()
@@ -53,7 +68,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gh', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
