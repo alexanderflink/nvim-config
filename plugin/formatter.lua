@@ -3,5 +3,8 @@ require("formatter").setup({
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
+		typescriptreact = {
+			require("formatter.filetypes.typescriptreact").prettier
+		}
 	},
 })
