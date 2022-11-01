@@ -4,7 +4,12 @@ require("formatter").setup({
 			require("formatter.filetypes.lua").stylua,
 		},
 		typescriptreact = {
-			require("formatter.filetypes.typescriptreact").prettier
-		}
+			require("formatter.filetypes.typescriptreact").prettier,
+		},
+		javascript = {
+			require("formatter.filetypes.javascript").prettier,
+		},
 	},
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, { command = "FormatWrite" })
