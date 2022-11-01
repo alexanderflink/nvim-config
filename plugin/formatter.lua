@@ -6,6 +6,9 @@ require("formatter").setup({
 		typescriptreact = {
 			require("formatter.filetypes.typescriptreact").prettier,
 		},
+		typescript = {
+			require("formatter.filetypes.typescriptreact").prettier,
+		},
 		javascript = {
 			require("formatter.filetypes.javascript").prettier,
 		},
