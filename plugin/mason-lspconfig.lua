@@ -1,5 +1,17 @@
 require("mason-lspconfig").setup({
-	ensure_installed = { "sumneko_lua", "rust_analyzer", "tsserver", "bashls", "cssls", "cssmodules_ls", "eslint", "graphql", "html", "jsonls", "pyright" },
+	ensure_installed = {
+		"sumneko_lua",
+		"rust_analyzer",
+		"tsserver",
+		"bashls",
+		"cssls",
+		"cssmodules_ls",
+		"eslint",
+		"graphql",
+		"html",
+		"jsonls",
+		"pyright",
+	},
 })
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
