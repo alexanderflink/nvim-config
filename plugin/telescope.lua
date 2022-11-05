@@ -1,18 +1,17 @@
 require("telescope").setup({
 	pickers = {
-		"buffers",
-		"find_files",
-		"grep_string",
-		"live_grep",
-		"marks",
-		"keymaps",
-		"diagnostics",
-		"lsp_workspace_symbols",
-		"lsp_document_symbols",
-		"commands",
-		"quickfix",
-		"registers"
-	}
+		buffers = {
+			sort_lastused = true,
+			mappings = {
+				i = {
+					["<c-d>"] = require("telescope.actions").delete_buffer,
+				},
+				n = {
+					["<c-d>"] = require("telescope.actions").delete_buffer,
+				},
+			},
+		},
+	},
 })
 
 require("telescope").load_extension("file_browser")
