@@ -9,7 +9,6 @@ local ensure_packer = function()
 	return false
 end
 
-
 ensure_packer()
 
 require("config")
