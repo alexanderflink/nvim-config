@@ -12,9 +12,12 @@ require("formatter").setup({
 		javascript = {
 			require("formatter.filetypes.javascript").prettier,
 		},
-		rust = {
-			require("formatter.filetypes.rust").rustfmt,
-		},
+		rust = function()
+			return {
+				exe = "rustfmt --edition 2021",
+				stdin = true,
+			}
+		end,
 	},
 })
 

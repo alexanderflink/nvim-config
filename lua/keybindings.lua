@@ -10,3 +10,5 @@ vim.keymap.set(
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Show diagnostic" }
 )
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<C-W>", "<C-\\><C-u><C-W>", opts)
