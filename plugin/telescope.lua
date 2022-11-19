@@ -15,6 +15,6 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("file_browser")
-vim.keymap.set("n", "<leader>t", ":Telescope<CR>", opts)
+vim.keymap.set("n", "<leader><leader>", ":Telescope<CR>", opts)
 vim.keymap.set("n", "<leader>bf", ":Telescope buffers<CR>", opts)
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", opts)
