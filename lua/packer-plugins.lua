@@ -7,7 +7,6 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("ishan9299/nvim-solarized-lua")
 	use("nvim-lua/plenary.nvim")
-	use({ "ellisonleao/gruvbox.nvim" })
 	use("mhartington/formatter.nvim")
 
 	use({
@@ -32,4 +31,5 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("nanozuki/tabby.nvim")
+	use("EdenEast/nightfox.nvim")
 end)

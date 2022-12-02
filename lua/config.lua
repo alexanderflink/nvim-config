@@ -6,3 +6,4 @@ vim.o.guifont = "Hack Nerd Font Mono:h13"
 vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, { pattern = { "term://*" }, command = "startinsert" })
 -- always show tabline
 vim.o.showtabline = 2
+vim.cmd("colorscheme duskfox")

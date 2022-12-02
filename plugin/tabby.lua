@@ -1,11 +1,11 @@
 local theme = {
 	fill = "TabLineFill",
 	-- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
-	head = { bg = "#282828" },
+	head = "TabLine",
 	current_tab = "TabLineSel",
-	tab = { fg = "#7c6f64", bg = "#282828" },
-	win = { fg = "#7c6f64", bg = "#282828" },
-	tail = { bg = "#282828" },
+	tab = "TabLine",
+	win = "TabLine",
+	tail = "TabLine",
 }
 
 require("tabby.tabline").set(function(line)
