@@ -12,6 +12,9 @@ require("formatter").setup({
 		javascript = {
 			require("formatter.filetypes.javascript").prettier,
 		},
+		javascriptreact = {
+			require("formatter.filetypes.javascriptreact").prettier,
+		},
 		rust = function()
 			return {
 				exe = "rustfmt --edition 2021",
