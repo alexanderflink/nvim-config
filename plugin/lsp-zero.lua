@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local cmp = require("cmp")
 
 lsp.preset("recommended")
 
@@ -16,24 +17,33 @@ lsp.ensure_installed({
 	"pyright",
 })
 
--- Fix Undefined global 'vim'
-lsp.configure("sumneko_lua", {
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
+lsp.set_preferences({
+	set_lsp_keymaps = false,
+})
+
+lsp.setup_nvim_cmp({
+	sources = {
+		-- This one provides the data from copilot.
+		{ name = "copilot" },
+
+		--- These are the default sources for lsp-zero
+		{ name = "path" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "luasnip", keyword_length = 2 },
 	},
+	mapping = lsp.defaults.cmp_mappings({
+		["<CR>"] = cmp.mapping.confirm({
+			-- documentation says this is important.
+			-- I don't know why.
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = false,
+		}),
+	}),
 })
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
-
-	if client.name == "eslint" then
-		vim.cmd.LspStop("eslint")
-		return
-	end
 
 	vim.keymap.set("n", "<leader>de", vim.lsp.buf.definition, opts)
 	vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, opts)
@@ -44,8 +54,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, opts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("i", "<leader>sh", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set("n", "K", "10k", opts)
+	vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, opts)
 end)
 
 lsp.setup()

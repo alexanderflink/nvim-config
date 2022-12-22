@@ -19,7 +19,6 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	use("windwp/nvim-ts-autotag")
 	use("tpope/vim-commentary")
-	use("github/copilot.vim")
 	use("lewis6991/gitsigns.nvim")
 	use("folke/which-key.nvim")
 	use("nvim-tree/nvim-web-devicons")
@@ -47,5 +46,22 @@ return require("packer").startup(function(use)
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
+	})
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup()
+			end, 100)
+		end,
+	})
+
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
 	})
 end)
