@@ -21,6 +21,17 @@ lsp.set_preferences({
 	set_lsp_keymaps = false,
 })
 
+local cmp_mapping = lsp.defaults.cmp_mappings({
+	["<Tab>"] = cmp.mapping.confirm({
+		-- documentation says this is important.
+		-- I don't know why.
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = false,
+	}),
+})
+
+cmp_mapping["<CR>"] = nil
+
 lsp.setup_nvim_cmp({
 	sources = {
 		-- This one provides the data from copilot.
@@ -32,14 +43,7 @@ lsp.setup_nvim_cmp({
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "luasnip", keyword_length = 2 },
 	},
-	mapping = lsp.defaults.cmp_mappings({
-		["<CR>"] = cmp.mapping.confirm({
-			-- documentation says this is important.
-			-- I don't know why.
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		}),
-	}),
+	mapping = cmp_mapping,
 })
 
 lsp.on_attach(function(client, bufnr)
