@@ -13,7 +13,7 @@ vim.keymap.set(
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<C-W>", "<C-\\><C-u><C-W>", opts)
 
-vim.keymap.set({ "t", "n", "i" }, "<D-t>", "<Esc>:tabnew | terminal<CR>", { remap = true, silent = true })
+vim.keymap.set({ "t", "n", "i" }, "<D-t>", "<Esc>:tabnew<CR>", { remap = true, silent = true })
 vim.keymap.set({ "t", "n", "i" }, "<D-w>", "<Esc>:bd!<CR>", { remap = true, silent = true })
 vim.keymap.set({ "t", "n", "i" }, "<D-1>", "<Esc>1gt", { remap = true, silent = true })
 vim.keymap.set({ "t", "n", "i" }, "<D-2>", "<Esc>2gt", { remap = true, silent = true })
